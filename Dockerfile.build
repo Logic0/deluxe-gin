@@ -1,0 +1,14 @@
+FROM golang:latest AS BUILDER
+
+MAINTAINER logiczhang "logiczhang@tencent.com"
+
+#设置工作目录
+RUN mkdir -p /open-platform/ability/
+
+COPY ./ /open-platform/ability/
+
+WORKDIR  /open-platform/ability/
+
+RUN go env -w GOPROXY=https://goproxy.cn,direct
+ENV GOOS=linux GOARCH=amd64
+RUN go build

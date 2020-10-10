@@ -1,0 +1,25 @@
+FROM alpine:3.11
+RUN mkdir -p /deluxe-gin/config
+WORKDIR /deluxe-gin/
+
+COPY ./docker/bin/ability .
+COPY ./docker/config/app-dev.yml ./config/
+COPY ./docker/tools ./tools
+
+# ca-certificates       [可选] CA 证书，方便使用 TLS
+# tzdata        [可选] 时区配置，方便 GORM 等需要处理时间的场景
+# libc6-compat  [必选] C 标准库
+# libgcc        [必选] GCC 相关库，CGO 编译的程序会依赖
+# libstdc++     [可选] C++ 标准库
+# bash          [必选] 腾讯云远程登录需要用 bash, alpine 默认只装了 sh
+RUN echo -e "https://mirrors.aliyun.com/alpine/v3.11/main" > /etc/apk/repositories && \
+    apk update && \
+    apk --update add --no-cache --virtual ca-certificates libc6-compat libgcc bash python2 py-pip tzdata
+
+# 设置时区
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone && export TZ="Asia/Shanghai"
+
+# 暴露端口
+EXPOSE 2000
+ENV IOV_ENVIRONMENT=dev
+ENTRYPOINT ["./ability"]

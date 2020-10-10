@@ -1,0 +1,61 @@
+# 配置文件
+#
+# timeout 时间配置，单位都为 ms
+#
+
+server:
+  port: 2000
+  mode: debug                    # release / debug / test
+
+# 日志设置
+log:
+  level: debug                   # debug/info/warn/error/fatal
+  path: /data/logs/deluxe-gin/
+  filename: deluxe-gin.log
+  max_age: 7                      # 最大 7 天
+  max_size: 10                    # 最多 10m 每个文件
+  backup_amount: 10               # 最多 10 个文件
+  compress: false                 # 是否对备份文件压缩
+  localtime: true                 # 使用本地时间
+
+# 监控系统配置
+monitor:
+  # 调用链跟踪, skywalking
+  tracing_server_addr: 127.0.0.1:11800
+  # 针对 prometheus 暴露的采集点
+  prometheus_export_url: /metrics
+
+mysql:
+  uri: username:password@tcp(127.0.0.1:3306)/my_db?charset=utf8&parseTime=True&loc=Local
+  max_idle_conn: 5
+  max_active_conn: 100
+  connect_timeout: 1000
+  read_timeout: 1000
+  write_timeout: 1000
+
+redis:
+  uri: redis://user:password@127.0.0.1:6379/0
+  max_idle_conn: 5
+  max_active_conn: 100
+  connect_timeout: 1000
+  read_timeout: 1000
+  write_timeout: 1000
+
+mongodb:
+  servers: [127.0.0.1:27017]
+  auth_database: admin
+  connect_timeout: 1000
+  read_timeout: 1000
+  write_timeout: 1000
+  username: user
+  password: passwd
+
+# 调用到 tsp access 的 session 保存时间
+session:
+  expire_time: 300000                      # 5 min, 毫秒 ms, Must be time.Second * N
+
+# 其他系统的地址
+system:
+  # X 模块地址
+  x_mod_addr: http://x-mod:2000
+  x_mod_timeout: 2000

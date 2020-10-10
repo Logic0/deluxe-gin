@@ -1,0 +1,9 @@
+package x_mod
+
+const (
+	RET_SUCCESS = 200
+
+	RET_SYSTEM_ERROR  = 4001
+	RET_TIMEOUT       = 4002
+	RET_NO_PERMISSION = 4003
+)
