@@ -7,17 +7,17 @@ import (
 )
 
 var icount = &monitor.Metric{
-    ID:          "vehicle_control_request_count",
-    Name:        "vehicle_control_request_count",
-    Description: "Vehicle Control requests detail, partitioned by function and error.",
+    ID:          "system_request_count",
+    Name:        "system_request_count",
+    Description: "System requests detail, partitioned by function and error.",
     Type:        "counter_vec",
     Args:        []string{ "appid", "func", "errno" },
 }
 
 var iduration = &monitor.Metric{
-    ID:          "vehicle_control_request_duration",
-    Name:        "vehicle_control_request_duration",
-    Description: "The Vehicle Control request latencies in milliseconds.",
+    ID:          "system_request_duration",
+    Name:        "system_request_duration",
+    Description: "System Control request latencies in milliseconds.",
     Type:        "histogram_vec",
     Args:        []string{ "appid", "func" },
 }
