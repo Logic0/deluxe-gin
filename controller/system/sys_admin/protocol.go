@@ -10,7 +10,7 @@ type AbilityItem struct{
     Desc string                        `json:"desc"`
 }
 
-// 初始化导入车控能力全集请求协议
+// 初始化导入能力全集请求协议
 type AbilityImportRequest struct{
     Abilities []AbilityItem            `json:"abilities"`
 }
@@ -19,7 +19,7 @@ type AbilityImportResponse struct {
     proto_common.CommResponse
 }
 
-// 添加一项车控能力
+// 添加一项能力
 type AbilityAddRequest struct{
     AbilityItem
 }
@@ -38,7 +38,7 @@ type AbilityUpdateResponse struct{
     proto_common.CommResponse
 }
 
-// 删除指定车控能力
+// 删除指定能力
 type AbilityDeleteRequest struct{
     ID uint                             `json:"id"`
 }
@@ -47,7 +47,7 @@ type AbilityDeleteResponse struct{
     proto_common.CommResponse
 }
 
-// 获取车控能力全集的协议
+// 获取能力全集的协议
 type AbilityGetAllRequest struct{
 }
 
@@ -60,14 +60,14 @@ type AbilityGetAllResponse struct{
     Data AbilityGetAllData             `json:"data"`
 }
 
-/***************************************** 车型事件协议 ************************************/
+/***************************************** 事件协议 ************************************/
 type EventItem struct{
     ID uint                            `json:"id"`
     Name string                        `json:"name"`
     Desc string                        `json:"desc"`
 }
 
-// 获取车控事件全集的协议
+// 获取事件全集的协议
 type EventGetAllRequest struct{
 }
 
@@ -89,7 +89,7 @@ type EventAddResponse struct{
     proto_common.CommResponse
 }
 
-// 根据条件查询车控事件
+// 根据条件查询事件
 type EventConditionFilterRequest struct{
     Appid uint                          `json:"factory_id"`
     VehicleTypeID uint                  `json:"vehicle_type_id"`
