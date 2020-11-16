@@ -51,8 +51,8 @@ type iMongoDB struct{
 
 // 周边系统相关的配置
 type iSystem struct{
-    TSPAccessAddr string          `yaml:"x_mod_addr"`
-    TSPAccessTimeout int          `yaml:"x_mod_timeout"`
+    XModAddr    string `yaml:"x_mod_addr"`
+    XModTimeout int    `yaml:"x_mod_timeout"`
 }
 
 // 与 TSP access 交互的 session 配置

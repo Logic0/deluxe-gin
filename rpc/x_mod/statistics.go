@@ -10,7 +10,7 @@ import (
 var icount = &monitor.Metric{
     ID:          "x_mod_request_count",
     Name:        "x_mod_request_count",
-    Description: "TSP Access service requests detail, partitioned by function and error.",
+    Description: "x_mod service requests detail, partitioned by function and error.",
     Type:        "counter_vec",
     Args:        []string{ "factory_id", "func", "errmsg" },
 }
@@ -18,7 +18,7 @@ var icount = &monitor.Metric{
 var iduration = &monitor.Metric{
     ID:          "tsp_access_request_duration",
     Name:        "tsp_access_request_duration",
-    Description: "The TSP Access service request latencies in milliseconds.",
+    Description: "The x_mod service request latencies in milliseconds.",
     Type:        "histogram_vec",
     Args:        []string{ "factory_id", "func" },
 }

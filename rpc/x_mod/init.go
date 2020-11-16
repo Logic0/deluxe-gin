@@ -21,8 +21,8 @@ func init(){
     }
 
     httpClient = resty.NewWithClient( tracedHC )
-    httpClient.SetTimeout( time.Duration( config.Config.System.TSPAccessTimeout )* time.Millisecond )
-    httpClient.SetHostURL( config.Config.System.TSPAccessAddr )
+    httpClient.SetTimeout( time.Duration( config.Config.System.XModTimeout)* time.Millisecond )
+    httpClient.SetHostURL( config.Config.System.XModAddr)
     httpClient.SetHeader("Content-Type", "application/json")
     httpClient.SetLogger( log.New() )
     httpClient.SetDebug( false )

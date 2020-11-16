@@ -9,7 +9,7 @@ import (
 
     "github.com/SkyAPM/go2sky"
     "github.com/SkyAPM/go2sky/propagation"
-    "github.com/SkyAPM/go2sky/reporter/grpc/common"
+    v3 "github.com/SkyAPM/go2sky/reporter/grpc/language-agent"
 )
 
 // Licensed to SkyAPM org under one or more contributor
@@ -116,7 +116,7 @@ func (t *transport) RoundTrip(req *http.Request) (res *http.Response, err error)
     }
     span.Tag(go2sky.TagHTTPMethod, req.Method)
     span.Tag(go2sky.TagURL, req.URL.String())
-    span.SetSpanLayer(common.SpanLayer_Http)
+    span.SetSpanLayer(v3.SpanLayer_Http)
     res, err = t.delegated.RoundTrip(req)
     if err != nil {
         span.Error(time.Now(), err.Error())

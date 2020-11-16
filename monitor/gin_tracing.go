@@ -8,7 +8,7 @@ import (
 
     "github.com/SkyAPM/go2sky"
     "github.com/SkyAPM/go2sky/propagation"
-    "github.com/SkyAPM/go2sky/reporter/grpc/common"
+    v3 "github.com/SkyAPM/go2sky/reporter/grpc/language-agent"
     "github.com/gin-gonic/gin"
 )
 
@@ -89,7 +89,7 @@ func Middleware(engine *gin.Engine, tracer *go2sky.Tracer) gin.HandlerFunc {
         span.SetComponent(httpServerComponentID)
         span.Tag(go2sky.TagHTTPMethod, c.Request.Method)
         span.Tag(go2sky.TagURL, c.Request.Host + c.Request.URL.Path)
-        span.SetSpanLayer(common.SpanLayer_Http)
+        span.SetSpanLayer(v3.SpanLayer_Http)
 
         c.Request = c.Request.WithContext(ctx)
 
